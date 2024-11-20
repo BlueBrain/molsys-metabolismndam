@@ -1,0 +1,6 @@
+cp /gpfs/bbp.cscs.ch/project/proj34/sh_ngvm/column/gen_diff_pulses/linamp1/julia_gen_calv_noLayerScaling.jl  gen_lin1_julia_gen_calv_noLayerScaling.jl
+cp /gpfs/bbp.cscs.ch/project/proj34/sh_ngvm/column/gen_diff_pulses/linamp1/nrn_revised.py  gen_lin1_nrn_revised.py
+cp /gpfs/bbp.cscs.ch/project/proj34/sh_ngvm/column/gen_diff_pulses/linamp1/BlueConfig blueconfigs/gen_lin1_mc2
+
+cp /gpfs/bbp.cscs.ch/project/proj34/sh_ngvm/column/nomet_nostim/BlueConfig arch202006nometnostim11feb2021
+
