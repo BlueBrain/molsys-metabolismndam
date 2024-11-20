@@ -1,0 +1,18 @@
+#Convert reports from bbp format to h5
+bash step1_convert_bbp2h5.sh OutputRoot #where OutputRoot is path to ndam sim output folder same as in BlueConfig
+
+#Get mean firing frequency using efel [optional]
+python utils/getMeanFreq.py Path2BlueConfig Path2Output
+
+#Get set of efel features [optional]
+module load unstable py-bluepy py-efel
+python getAllEfel.py Path2BlueConfig outfilename
+
+#Get set of efel features for 10% of gids choosing between features set one or two in arguments [optional]
+module load unstable py-bluepy py-efel
+python getAllEfel_10percentGids.py Path2BlueConfig outfilename 1 # to run with features set one
+
+#Get INa and ATP for correlation analysis
+python ina_atp_firing.py percent_gids sim_f mean_freq_f out_f_name
+#or working with sim with different ina reports modify marked line when run
+python ina_atp_firingSoma.py percent_gids sim_f mean_freq_f out_f_name

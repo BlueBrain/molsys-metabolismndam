@@ -1,0 +1,35 @@
+status | target | metabolism model | time | stim | path2run | outputRoot 
+
+done | mc2 | Calv noLayerScale | 5 sec | in vivo p150 Bale thalamic inputs from 1s to 4s | /gpfs/bbp.cscs.ch/project/proj34/sh_ngvm/column/met_gen_inasum | /gpfs/bbp.cscs.ch/project/proj34/scratch/polina/invivolike/met_gen_inasum_2dec2020
+
+done | mc2 | Calv noLayerScale | 5 sec | no stim | /gpfs/bbp.cscs.ch/project/proj34/sh_ngvm/column/met_gen_inasum_nostim | /gpfs/bbp.cscs.ch/project/proj34/scratch/polina/invivolike/met_gen_inasum_nostim
+
+done | mc2 | full 168 met | 5 sec | in vivo p150 Bale thalamic inputs | /gpfs/bbp.cscs.ch/project/proj34/sh_ngvm/column/met_v3_all_23nov2020 | /gpfs/bbp.cscs.ch/project/proj34/scratch/polina/invivolike/met_v3_all_23nov2020
+
+failed at 3707 due to out.dat | mc2 | full 168 met | 5 sec | in vivo p150 Bale thalamic inputs | /gpfs/bbp.cscs.ch/project/proj34/sh_ngvm/column/met_v3_all_20nov2020 | /gpfs/bbp.cscs.ch/project/proj34/scratch/polina/invivolike/met_v3_all_20nov2020 
+
+done check um and par out files timestr minutes issue, no glugaba output, no out.dat | mc2 | full 168 met | 5 sec | in vivo p150 Bale thalamic inputs | /gpfs/bbp.cscs.ch/project/proj34/sh_ngvm/column/met_v3_all | /gpfs/bbp.cscs.ch/project/proj34/scratch/polina/invivolike/met_v3_all_13nov2020
+
+done | mc2 | full 168 met | 5 sec | no stim | /gpfs/bbp.cscs.ch/project/proj34/sh_ngvm/column/met_nostim | /gpfs/bbp.cscs.ch/project/proj34/scratch/polina/invivolike/met_nostim_20nov2020
+
+done | mc2 | full 168 met | 5 sec | one pulse | /gpfs/bbp.cscs.ch/project/proj34/sh_ngvm/column/met_onepulse | /gpfs/bbp.cscs.ch/project/proj34/scratch/polina/invivolike/met_onepulse
+
+done | mc2 | Calv noLayerScale | 5 sec | in vivo p150 Bale thalamic inputs | /gpfs/bbp.cscs.ch/project/proj34/sh_ngvm/column/met_general | /gpfs/bbp.cscs.ch/project/proj34/scratch/polina/invivolike/met_general_18nov2020
+
+done | mc2 | Calv noLayerScale | 5 sec | no stim | /gpfs/bbp.cscs.ch/project/proj34/sh_ngvm/column/met_gen_nostim | /gpfs/bbp.cscs.ch/project/proj34/scratch/polina/invivolike/met_gen_nostim_20nov2020
+
+done | mc2 | Calv noLayerScale | 5 sec | one pulse | /gpfs/bbp.cscs.ch/project/proj34/sh_ngvm/column/met_gen_onepulse | /gpfs/bbp.cscs.ch/project/proj34/scratch/polina/invivolike/met_gen_onepulse 
+
+done | mc2 | no metabolism | 5 sec | in vivo p150 Bale thalamic inputs | /gpfs/bbp.cscs.ch/project/proj34/sh_ngvm/column/nomet_18nov2020 | /gpfs/bbp.cscs.ch/project/proj34/scratch/polina/invivolike/nomet_5sec_18nov2020
+
+done | mc2 | no metabolism | 5 sec | no stim | /gpfs/bbp.cscs.ch/project/proj34/sh_ngvm/column/nomet_nostim | /gpfs/bbp.cscs.ch/project/proj34/scratch/polina/invivolike/nomet_nostim_19nov2020
+
+done | mc2 | no metabolism | 5 sec | one pulse | /gpfs/bbp.cscs.ch/project/proj34/sh_ngvm/column/nomet_onepulse_19nov2020 | /gpfs/bbp.cscs.ch/project/proj34/scratch/polina/invivolike/nomet_onepulse_19nov2020_19nov2020
+
+done | mc2 | no metabolism | 5 sec | three pulses | /gpfs/bbp.cscs.ch/project/proj34/sh_ngvm/column/nomet_pulse_19nov2020 | /gpfs/bbp.cscs.ch/project/proj34/scratch/polina/invivolike/nomet_pulse_19nov2020
+
+ 
+
+
+
+

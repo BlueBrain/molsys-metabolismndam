@@ -1,0 +1,38 @@
+module load archive/2020-11
+module load py-bluepy/0.14.15
+module load py-efel/3.0.80
+module load julia/1.5.2
+
+#python -m venv jupyter_py_venv_ood
+
+#. jupyter_py_venv_ood/bin/activate
+
+export PATH="$PATH:~/gpfs/bbp.cscs.ch/home/shichkov/.local/bin"
+pip install diffeqpy
+
+python
+import diffeqpy
+diffeqpy.install()
+from julia import Main
+pip install jupyterlab
+
+
+
+ . ../sh_ngvm/jupyter_py_venv_ood/bin/activate
+
+# Make sure that modules are ONLY the following (because mpi ndam modules break bluepy.v2): 
+
+[shichkov@bbpv1 sh_ngvm]$ module list
+Currently Loaded Modulefiles:
+  1) archive/2020-11       3) py-bluepysnap/0.6.1   5) py-efel/3.0.80
+  2) python/3.7.4          4) py-bluepy/0.14.15     6) julia/1.5.2
+
+### otherwise (and in general, good practice to keep env clean):
+
+module purge
+module load archive/2020-11
+module load py-bluepy/0.14.15
+module load py-efel/3.0.80
+module load julia/1.5.2
+
+
