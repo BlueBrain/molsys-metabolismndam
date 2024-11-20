@@ -1,0 +1,38 @@
+Run Default
+{
+
+   MorphologyPath /gpfs/bbp.cscs.ch/project/proj83/morphologies/fixed_ais_L23PC_20201210
+   METypePath   /gpfs/bbp.cscs.ch/project/proj34/sh_ngvm/emodels_atp_scan/emodels_atp_1p2
+   MEComboInfoFile /gpfs/bbp.cscs.ch/project/proj83/singlecell/fixed_L6_allBPC_thresholds/mecombo_emodel.tsv 
+
+      CircuitPath /gpfs/bbp.cscs.ch/project/proj83/circuits/Bio_M/20200805
+          nrnPath /gpfs/bbp.cscs.ch/project/proj83/circuits/Bio_M/20200805/connectome/functional
+  CellLibraryFile circuit.mvd3
+
+        CurrentDir /gpfs/bbp.cscs.ch/project/proj34/metabolismndam/triplerun 
+      OutputRoot /gpfs/bbp.cscs.ch/project/proj34/scratch/polina/triplerun_output_p5 
+      TargetFile /gpfs/bbp.cscs.ch/project/proj62/ngv_test_dan/user.target
+
+
+    CircuitTarget hex0
+#    CircuitTarget a301
+         Duration 0.026
+               Dt 0.025
+    RunMode RR
+    RNGMode Random123
+    BaseSeed 870700
+
+}
+
+Report soma
+{
+
+        Target a301
+        Type compartment
+        ReportOn v
+        Unit mV
+        Format Bin
+        Dt 0.1
+        StartTime 0
+        EndTime 30
+}

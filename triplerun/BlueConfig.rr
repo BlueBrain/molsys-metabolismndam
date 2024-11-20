@@ -1,0 +1,53 @@
+Run Default
+{
+    Date    21:3:19
+    Time    12:27:36
+          svnPath https://bbpteam.epfl.ch/svn/bluebrain
+    Version    1094
+
+         RNGMode UpdatedMCell
+        BaseSeed 4203921
+
+    CurrentDir   .
+      OutputRoot /gpfs/bbp.cscs.ch/project/proj34/scratch/polina/triplerun_output
+      TargetFile user.target
+
+         RunMode RR
+   CircuitTarget mc2_Column
+        Duration 10
+              Dt 0.025
+
+    CircuitPath /gpfs/bbp.cscs.ch/project/proj64/var/git/circuits/O1.v6a/20181207
+    nrnPath /gpfs/bbp.cscs.ch/project/proj64/var/git/circuits/O1.v6a/20181207/connectome/functional
+    MorphologyPath /gpfs/bbp.cscs.ch/project/proj59/entities/morphologies/2017.10.31
+    METypePath /gpfs/bbp.cscs.ch/project/proj34/sh_ngvm/emodels_dend_highATP
+    MEComboInfoFile /gpfs/bbp.cscs.ch/project/proj64/entities/emodels/2017.11.03/mecombo_emodel.tsv
+    CellLibraryFile circuit.mvd3
+
+
+}
+
+Report soma
+{
+        Target L5mc2MCTPCA 
+        Type compartment
+        ReportOn v
+        Unit mV
+        Format Bin
+        Dt 0.1
+        StartTime 0
+        EndTime 10
+}
+
+Report NaCurrCompSum
+{
+    Target AllComps_l5s1
+    Type Summation
+    ReportOn ina
+    Unit nA
+    Format Bin
+    Dt 0.1
+    StartTime 0
+    EndTime 10
+}
+
