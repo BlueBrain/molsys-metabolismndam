@@ -1,0 +1,164 @@
+Run Default
+{
+
+   MorphologyPath /gpfs/bbp.cscs.ch/project/proj59/entities/morphologies/2017.10.31
+   METypePath   /gpfs/bbp.cscs.ch/project/proj64/entities/emodels/2017.11.03/hoc
+   MEComboInfoFile /gpfs/bbp.cscs.ch/project/proj64/entities/emodels/2017.11.03/mecombo_emodel.tsv
+
+      CircuitPath /gpfs/bbp.cscs.ch/project/proj64/circuits/O1.v6a/20181207
+          nrnPath /gpfs/bbp.cscs.ch/project/proj64/circuits/O1.v6a/20181207/connectome/functional
+  CellLibraryFile circuit.mvd3
+
+	CurrentDir /gpfs/bbp.cscs.ch/project/proj34/sh_ngvm/column/ina_new_jorge
+      OutputRoot /gpfs/bbp.cscs.ch/project/proj34/scratch/polina/ina_new_jorge
+      TargetFile /gpfs/bbp.cscs.ch/project/proj34/sh_ngvm/column/ina_new_jorge/user.target
+
+
+    CircuitTarget L5mc2MCTPCA
+         Duration 50
+               Dt 0.025
+
+    RunMode RR
+
+}
+
+Stimulus train2
+{
+         Mode Current
+      Pattern Pulse
+    Frequency 10
+        Width 5
+     AmpStart 10.0
+       AmpEnd 10.0
+        Delay 10.0
+     Duration 50
+}
+
+StimulusInject Train2CenCol
+{
+        Stimulus train2
+        Target L5mc2MCTPCA
+}
+
+Report soma
+{
+        Target L5mc2MCTPCA
+        Type compartment
+        ReportOn v
+        Unit mV
+        Format Bin
+        Dt 0.1
+        StartTime 0
+        EndTime 50
+}
+
+Report NaCurrSoma
+{
+    Target L5mc2MCTPCA
+    Type compartment
+    ReportOn ina
+    Unit nA
+    Format Bin
+    Dt 1.0
+    StartTime 0
+    EndTime 50
+}
+
+Report NaCurrCompSum
+{
+    Target AllComps_l5s1
+    Type Summation
+    ReportOn ina
+    Unit nA
+    Format Bin
+    Dt 1.0
+    StartTime 0
+    EndTime 50
+}
+
+Report NaCurrCellSum
+{
+    Target L5mc2MCTPCA
+    Type Summation
+    ReportOn ina
+    Unit nA
+    Format Bin
+    Scaling Area
+    Dt 1.0 
+    StartTime 0
+    EndTime 50
+}
+
+Report NaCurrCellSumNosc
+{
+    Target L5mc2MCTPCA
+    Type Summation
+    ReportOn ina
+    Unit nA
+    Format Bin
+    Scaling None
+    Dt 1.0 
+    StartTime 0
+    EndTime 50
+}
+
+#Report NaCurrCompComp
+#{
+#    Target AllComps_l5s1
+#    Type compartment
+#    ReportOn ina
+#    Unit nA
+#    Format Bin
+#    Dt 1.0 
+#    StartTime 0
+#    EndTime 50
+#}
+
+Stimulus ThresholdExc
+{
+
+              Mode Current
+           Pattern Noise
+       MeanPercent 85.0
+          Variance 0.001
+             Delay 0.000000
+          Duration 50
+}
+
+Stimulus ThresholdInh
+{
+
+              Mode Current
+           Pattern Noise
+       MeanPercent 85.0
+          Variance 0.001
+             Delay 0.000000
+          Duration 50
+}
+
+StimulusInject ThresholdIntoExc
+{
+        Stimulus ThresholdExc
+        Target Excitatory
+}
+
+StimulusInject ThresholdIntoInh
+{
+        Stimulus ThresholdInh
+        Target Inhibitory
+}
+
+Stimulus hypamp
+{
+        Mode Current
+  Pattern Hyperpolarizing
+        Delay 0.0
+  Duration 50
+}
+
+StimulusInject hypamp_mosaic
+{
+        Stimulus hypamp
+        Target Mosaic
+}
+

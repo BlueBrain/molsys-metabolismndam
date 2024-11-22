@@ -1,0 +1,99 @@
+Run Default
+{
+
+   MorphologyPath /gpfs/bbp.cscs.ch/project/proj59/entities/morphologies/2017.10.31
+   METypePath   /gpfs/bbp.cscs.ch/project/proj34/camps/custom_neurodamus/emodels_dend
+   MEComboInfoFile /gpfs/bbp.cscs.ch/project/proj64/entities/emodels/2017.11.03/mecombo_emodel.tsv
+
+      CircuitPath /gpfs/bbp.cscs.ch/project/proj64/circuits/O1.v6a/20181207
+          nrnPath /gpfs/bbp.cscs.ch/project/proj64/circuits/O1.v6a/20181207/connectome/functional
+  CellLibraryFile circuit.mvd3
+
+	CurrentDir /gpfs/bbp.cscs.ch/project/proj34/sh_ngvm/column/nomet_nostim_noextras
+      OutputRoot /gpfs/bbp.cscs.ch/project/proj34/scratch/polina/invivolike/nomet_nostim_noextras_26nov2020
+      TargetFile /gpfs/bbp.cscs.ch/project/proj34/sh_ngvm/column/nomet_nostim_noextras/user.target
+
+
+    CircuitTarget mc2_Column
+         Duration 5001
+               Dt 0.025
+
+    RunMode RR
+
+     FlushBufferScalar 1000000
+
+}
+
+Report soma
+{
+        Target mc2_Column
+        Type compartment
+        ReportOn v
+        Unit mV
+        Format Bin
+        Dt 0.1
+        StartTime 0
+        EndTime 5000
+}
+
+Report NaConcAllCmps
+{
+    Target mc2_Column
+    Type compartment
+    ReportOn nai
+    Unit mM
+    Format Bin
+    Dt 1
+    StartTime 0
+    EndTime 5000
+}
+
+Report ATPConcAllCmps
+{
+    Target mc2_Column
+    Type compartment
+    ReportOn atpi
+    Unit mM
+    Format Bin
+    Dt 1
+    StartTime 0
+    EndTime 5000
+}
+
+Report ADPConcAllCmps
+{   
+    Target mc2_Column
+    Type compartment
+    ReportOn adpi
+    Unit mM
+    Format Bin
+    Dt 1
+    StartTime 0
+    EndTime 5000
+}
+
+Report KConcAllCmps
+{   
+    Target mc2_Column
+    Type compartment
+    ReportOn ki
+    Unit mM
+    Format Bin
+    Dt 1
+    StartTime 0
+    EndTime 5000
+}
+
+Report CaConcAllCmps
+{   
+    Target mc2_Column
+    Type compartment
+    ReportOn cai
+    Unit mM
+    Format Bin
+    Dt 1
+    StartTime 0
+    EndTime 5000
+}   
+
+

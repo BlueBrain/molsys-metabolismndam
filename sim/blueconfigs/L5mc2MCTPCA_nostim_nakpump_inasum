@@ -1,0 +1,173 @@
+Run Default
+{
+
+   MorphologyPath /gpfs/bbp.cscs.ch/project/proj59/entities/morphologies/2017.10.31
+   METypePath   /gpfs/bbp.cscs.ch/project/proj34/camps/custom_neurodamus/emodels_dend
+   MEComboInfoFile /gpfs/bbp.cscs.ch/project/proj64/entities/emodels/2017.11.03/mecombo_emodel.tsv
+
+      CircuitPath /gpfs/bbp.cscs.ch/project/proj64/circuits/O1.v6a/20181207
+          nrnPath /gpfs/bbp.cscs.ch/project/proj64/circuits/O1.v6a/20181207/connectome/functional
+  CellLibraryFile circuit.mvd3
+
+	CurrentDir /gpfs/bbp.cscs.ch/project/proj34/sh_ngvm/column/test_err
+      OutputRoot /gpfs/bbp.cscs.ch/project/proj34/scratch/polina/test_10dec2020
+      TargetFile /gpfs/bbp.cscs.ch/project/proj34/sh_ngvm/column/test_err/user.target
+
+
+    CircuitTarget L5mc2MCTPCA
+         Duration 3000
+               Dt 0.025
+
+    RunMode RR
+
+     FlushBufferScalar 1000000
+
+}
+
+Report soma
+{
+        Target L5mc2MCTPCA
+        Type compartment
+        ReportOn v
+        Unit mV
+        Format Bin
+        Dt 0.1
+        StartTime 0
+        EndTime 3000
+}
+
+Report NaCurrSumCol
+{
+    Target L5mc2MCTPCA
+    Type Summation
+    ReportOn ina
+    Unit nA
+    Format Bin
+    Dt 1.0
+    StartTime 0
+    EndTime 3000
+}
+
+Report NaCurrSoma
+{
+    Target L5mc2MCTPCA
+    Type compartment
+    ReportOn ina
+    Unit nA
+    Format Bin
+    Dt 1.0
+    StartTime 0
+    EndTime 3000
+}
+
+Report NaCurrentAllCmps
+{
+    Target AllComps3
+    Type compartment
+    ReportOn ina
+    Unit nA
+    Format Bin
+    Dt 1.0 
+    StartTime 0
+    EndTime 10
+} 
+
+Report NaCurrS
+{
+    Target AllComps3
+    Type Summation
+    ReportOn ina
+    Unit nA
+    Format Bin
+    Dt 1.0
+    StartTime 0
+    EndTime 3000
+}
+
+#ReportOn ina_nakpump requires intrinsicLibrary.append( new String( "ina_nakpump" ) ) in HOC 
+
+Report NaCurrPumpS
+{   
+    Target AllComps3
+    Type Summation
+    ReportOn ina_nakpump
+    Unit nA
+    Format Bin
+    Dt 1.0
+    StartTime 0
+    EndTime 3000
+}
+
+Report ATPConcAllCmps
+{
+    Target L5mc2MCTPCA
+    Type compartment
+    ReportOn atpi
+    Unit mM
+    Format Bin
+    Dt 1
+    StartTime 0
+    EndTime 3000
+}
+
+#Report NaCurrSumScalNo
+#{
+#    Target AllComps_mc2
+#    Type Summation
+#    Scaling None
+#    ReportOn ina
+#    Unit nA
+#    Format Bin
+#    Dt 1.0 
+#    StartTime 0
+#    EndTime 10
+#} 
+
+Stimulus ThresholdExc
+{
+
+              Mode Current
+           Pattern Noise
+       MeanPercent 85.0
+          Variance 0.001
+             Delay 0.000000
+          Duration 3000
+}
+
+Stimulus ThresholdInh
+{
+
+              Mode Current
+           Pattern Noise
+       MeanPercent 85.0
+          Variance 0.001
+             Delay 0.000000
+          Duration 3000
+}
+
+StimulusInject ThresholdIntoExc
+{
+        Stimulus ThresholdExc
+        Target Excitatory
+}
+
+StimulusInject ThresholdIntoInh
+{
+        Stimulus ThresholdInh
+        Target Inhibitory
+}
+
+Stimulus hypamp
+{
+        Mode Current
+  Pattern Hyperpolarizing
+        Delay 0.0
+  Duration 3000
+}
+
+StimulusInject hypamp_mosaic
+{
+        Stimulus hypamp
+        Target Mosaic
+}
+

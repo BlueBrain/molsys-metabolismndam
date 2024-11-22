@@ -1,0 +1,361 @@
+Run Default
+{
+    Date 28:03:21
+    Time 11:27:09
+    Note Created using bbmake by user bolanos
+
+    CircuitPath /gpfs/bbp.cscs.ch/project/proj83/circuits/Bio_M/20200805
+    nrnPath /gpfs/bbp.cscs.ch/project/proj83/circuits/Bio_M/20200805/connectome/functional/edges.sonata
+    CellLibraryFile /gpfs/bbp.cscs.ch/project/proj83/circuits/Bio_M/20200805/circuit.mvd3
+
+    BioName /gpfs/bbp.cscs.ch/project/proj83/circuits/Bio_M/20200805/bioname
+    Atlas /gpfs/bbp.cscs.ch/project/proj83/data/atlas/S1/MEAN/P14-MEAN
+
+    METypePath /gpfs/bbp.cscs.ch/project/proj83/singlecell/release_2020-07-31/hoc
+    MEComboInfoFile /gpfs/bbp.cscs.ch/project/proj83/singlecell/fixed_L6_allBPC_thresholds/mecombo_emodel.tsv
+    MorphologyPath /gpfs/bbp.cscs.ch/project/proj83/morphologies/fixed_ais_L23PC_20201210/ascii
+    MorphologyType asc
+
+    CurrentDir /gpfs/bbp.cscs.ch/data/scratch/proj83/simulations/new_tc_nrrp/output/depolarization0p0/Ca1p20/rateVPM0p5/ratePOM0p5/seed549821
+    OutputRoot /gpfs/bbp.cscs.ch/data/scratch/proj83/simulations/new_tc_nrrp/output/depolarization0p0/Ca1p20/rateVPM0p5/ratePOM0p5/seed549821
+    TargetFile /gpfs/bbp.cscs.ch/data/scratch/proj83/simulations/new_tc_nrrp/output/depolarization0p0/Ca1p20/rateVPM0p5/ratePOM0p5/seed549821/user.target
+
+    CircuitTarget Mosaic
+    Duration 4000
+    Dt 0.025
+
+    RNGMode Random123
+    BaseSeed 549821
+
+    Simulator CORENEURON
+    RunMode WholeCell
+    ForwardSkip 0
+    
+
+    ExtracellularCalcium 1.20
+    MinisSingleVesicle 1
+    SpikeLocation AIS
+    V_Init -80
+
+    
+}
+
+Conditions Default
+{
+    randomize_Gaba_risetime False
+    SYNAPSES__init_depleted 1
+}
+
+Projection Thalamocortical_input_VPM_dz
+{
+    Path /gpfs/bbp.cscs.ch/project/proj83/circuits/Bio_M/20200805/projections/2021_02_12/vpm_region_by_region_flatmap/out_vpm_s1dz/projections.sonata
+    Source proj_Thalamocortical_VPM_Source_dz
+}
+
+Projection Thalamocortical_input_VPM_dzo
+{
+    Path /gpfs/bbp.cscs.ch/project/proj83/circuits/Bio_M/20200805/projections/2021_02_12/vpm_region_by_region_flatmap/out_vpm_s1dzo/projections.sonata
+    Source proj_Thalamocortical_VPM_Source_dzo
+}
+
+Projection Thalamocortical_input_VPM_fl
+{
+    Path /gpfs/bbp.cscs.ch/project/proj83/circuits/Bio_M/20200805/projections/2021_02_12/vpm_region_by_region_flatmap/out_vpm_s1fl/projections.sonata
+    Source proj_Thalamocortical_VPM_Source_fl
+}
+
+Projection Thalamocortical_input_VPM_hl
+{
+    Path /gpfs/bbp.cscs.ch/project/proj83/circuits/Bio_M/20200805/projections/2021_02_12/vpm_region_by_region_flatmap/out_vpm_s1hl/projections.sonata
+    Source proj_Thalamocortical_VPM_Source_hl
+}
+
+Projection Thalamocortical_input_VPM_j
+{
+    Path /gpfs/bbp.cscs.ch/project/proj83/circuits/Bio_M/20200805/projections/2021_02_12/vpm_region_by_region_flatmap/out_vpm_s1j/projections.sonata
+    Source proj_Thalamocortical_VPM_Source_j
+}
+
+Projection Thalamocortical_input_VPM_sh
+{
+    Path /gpfs/bbp.cscs.ch/project/proj83/circuits/Bio_M/20200805/projections/2021_02_12/vpm_region_by_region_flatmap/out_vpm_s1sh/projections.sonata
+    Source proj_Thalamocortical_VPM_Source_sh
+}
+
+Projection Thalamocortical_input_VPM_tr
+{
+    Path /gpfs/bbp.cscs.ch/project/proj83/circuits/Bio_M/20200805/projections/2021_02_12/vpm_region_by_region_flatmap/out_vpm_s1tr/projections.sonata
+    Source proj_Thalamocortical_VPM_Source_tr
+}
+
+Projection Thalamocortical_input_VPM_ulp
+{
+    Path /gpfs/bbp.cscs.ch/project/proj83/circuits/Bio_M/20200805/projections/2021_02_12/vpm_region_by_region_flatmap/out_vpm_s1ulp/projections.sonata
+    Source proj_Thalamocortical_VPM_Source_ulp
+}
+
+Projection Thalamocortical_input_POM_dz
+{
+    Path /gpfs/bbp.cscs.ch/project/proj83/circuits/Bio_M/20200805/projections/2021_02_12/pom_region_by_region_flatmap/out_pom_s1dz/projections.sonata
+    Source proj_Thalamocortical_POM_Source_dz
+}
+
+Projection Thalamocortical_input_POM_dzo
+{
+    Path /gpfs/bbp.cscs.ch/project/proj83/circuits/Bio_M/20200805/projections/2021_02_12/pom_region_by_region_flatmap/out_pom_s1dzo/projections.sonata
+    Source proj_Thalamocortical_POM_Source_dzo
+}
+
+Projection Thalamocortical_input_POM_fl
+{
+    Path /gpfs/bbp.cscs.ch/project/proj83/circuits/Bio_M/20200805/projections/2021_02_12/pom_region_by_region_flatmap/out_pom_s1fl/projections.sonata
+    Source proj_Thalamocortical_POM_Source_fl
+}
+
+Projection Thalamocortical_input_POM_hl
+{
+    Path /gpfs/bbp.cscs.ch/project/proj83/circuits/Bio_M/20200805/projections/2021_02_12/pom_region_by_region_flatmap/out_pom_s1hl/projections.sonata
+    Source proj_Thalamocortical_POM_Source_hl
+}
+
+Projection Thalamocortical_input_POM_j
+{
+    Path /gpfs/bbp.cscs.ch/project/proj83/circuits/Bio_M/20200805/projections/2021_02_12/pom_region_by_region_flatmap/out_pom_s1j/projections.sonata
+    Source proj_Thalamocortical_POM_Source_j
+}
+
+Projection Thalamocortical_input_POM_sh
+{
+    Path /gpfs/bbp.cscs.ch/project/proj83/circuits/Bio_M/20200805/projections/2021_02_12/pom_region_by_region_flatmap/out_pom_s1sh/projections.sonata
+    Source proj_Thalamocortical_POM_Source_sh
+}
+
+Projection Thalamocortical_input_POM_tr
+{
+    Path /gpfs/bbp.cscs.ch/project/proj83/circuits/Bio_M/20200805/projections/2021_02_12/pom_region_by_region_flatmap/out_pom_s1tr/projections.sonata
+    Source proj_Thalamocortical_POM_Source_tr
+}
+
+Projection Thalamocortical_input_POM_ulp
+{
+    Path /gpfs/bbp.cscs.ch/project/proj83/circuits/Bio_M/20200805/projections/2021_02_12/pom_region_by_region_flatmap/out_pom_s1ulp/projections.sonata
+    Source proj_Thalamocortical_POM_Source_ulp
+}
+
+
+# Standard soma voltage report
+Report soma
+{
+       Target Mosaic
+         Type compartment
+     ReportOn v
+         Unit mV
+       Format Bin
+           Dt 0.1
+    StartTime 1000
+      EndTime 4000
+}
+
+
+# No minis from virtual fibers proj_Thalamocortical_VPM_Source_dz
+
+Connection no_minis-proj_Thalamocortical_VPM_Source_dz
+{
+         Source proj_Thalamocortical_VPM_Source_dz
+    Destination Mosaic
+     SpontMinis 0.0
+         Weight 1.0
+}
+
+# No minis from virtual fibers proj_Thalamocortical_VPM_Source_dzo
+
+Connection no_minis-proj_Thalamocortical_VPM_Source_dzo
+{
+         Source proj_Thalamocortical_VPM_Source_dzo
+    Destination Mosaic
+     SpontMinis 0.0
+         Weight 1.0
+}
+
+# No minis from virtual fibers proj_Thalamocortical_VPM_Source_fl
+
+Connection no_minis-proj_Thalamocortical_VPM_Source_fl
+{
+         Source proj_Thalamocortical_VPM_Source_fl
+    Destination Mosaic
+     SpontMinis 0.0
+         Weight 1.0
+}
+
+# No minis from virtual fibers proj_Thalamocortical_VPM_Source_hl
+
+Connection no_minis-proj_Thalamocortical_VPM_Source_hl
+{
+         Source proj_Thalamocortical_VPM_Source_hl
+    Destination Mosaic
+     SpontMinis 0.0
+         Weight 1.0
+}
+
+# No minis from virtual fibers proj_Thalamocortical_VPM_Source_j
+
+Connection no_minis-proj_Thalamocortical_VPM_Source_j
+{
+         Source proj_Thalamocortical_VPM_Source_j
+    Destination Mosaic
+     SpontMinis 0.0
+         Weight 1.0
+}
+
+# No minis from virtual fibers proj_Thalamocortical_VPM_Source_sh
+
+Connection no_minis-proj_Thalamocortical_VPM_Source_sh
+{
+         Source proj_Thalamocortical_VPM_Source_sh
+    Destination Mosaic
+     SpontMinis 0.0
+         Weight 1.0
+}
+
+# No minis from virtual fibers proj_Thalamocortical_VPM_Source_tr
+
+Connection no_minis-proj_Thalamocortical_VPM_Source_tr
+{
+         Source proj_Thalamocortical_VPM_Source_tr
+    Destination Mosaic
+     SpontMinis 0.0
+         Weight 1.0
+}
+
+# No minis from virtual fibers proj_Thalamocortical_VPM_Source_ulp
+
+Connection no_minis-proj_Thalamocortical_VPM_Source_ulp
+{
+         Source proj_Thalamocortical_VPM_Source_ulp
+    Destination Mosaic
+     SpontMinis 0.0
+         Weight 1.0
+}
+
+# No minis from virtual fibers proj_Thalamocortical_POM_Source_dz
+
+Connection no_minis-proj_Thalamocortical_POM_Source_dz
+{
+         Source proj_Thalamocortical_POM_Source_dz
+    Destination Mosaic
+     SpontMinis 0.0
+         Weight 1.0
+}
+
+# No minis from virtual fibers proj_Thalamocortical_POM_Source_dzo
+
+Connection no_minis-proj_Thalamocortical_POM_Source_dzo
+{
+         Source proj_Thalamocortical_POM_Source_dzo
+    Destination Mosaic
+     SpontMinis 0.0
+         Weight 1.0
+}
+
+# No minis from virtual fibers proj_Thalamocortical_POM_Source_fl
+
+Connection no_minis-proj_Thalamocortical_POM_Source_fl
+{
+         Source proj_Thalamocortical_POM_Source_fl
+    Destination Mosaic
+     SpontMinis 0.0
+         Weight 1.0
+}
+
+# No minis from virtual fibers proj_Thalamocortical_POM_Source_hl
+
+Connection no_minis-proj_Thalamocortical_POM_Source_hl
+{
+         Source proj_Thalamocortical_POM_Source_hl
+    Destination Mosaic
+     SpontMinis 0.0
+         Weight 1.0
+}
+
+# No minis from virtual fibers proj_Thalamocortical_POM_Source_j
+
+Connection no_minis-proj_Thalamocortical_POM_Source_j
+{
+         Source proj_Thalamocortical_POM_Source_j
+    Destination Mosaic
+     SpontMinis 0.0
+         Weight 1.0
+}
+
+# No minis from virtual fibers proj_Thalamocortical_POM_Source_sh
+
+Connection no_minis-proj_Thalamocortical_POM_Source_sh
+{
+         Source proj_Thalamocortical_POM_Source_sh
+    Destination Mosaic
+     SpontMinis 0.0
+         Weight 1.0
+}
+
+# No minis from virtual fibers proj_Thalamocortical_POM_Source_tr
+
+Connection no_minis-proj_Thalamocortical_POM_Source_tr
+{
+         Source proj_Thalamocortical_POM_Source_tr
+    Destination Mosaic
+     SpontMinis 0.0
+         Weight 1.0
+}
+
+# No minis from virtual fibers proj_Thalamocortical_POM_Source_ulp
+
+Connection no_minis-proj_Thalamocortical_POM_Source_ulp
+{
+         Source proj_Thalamocortical_POM_Source_ulp
+    Destination Mosaic
+     SpontMinis 0.0
+         Weight 1.0
+}
+
+# Delayed reconnection protocol
+
+## Connect all, minis use this weight
+Connection all_to_all
+{
+         Source Mosaic
+    Destination Mosaic
+         Weight 1.0
+}
+
+## Disconnect immediately
+Connection all_disconnect
+{
+    Source Mosaic
+    Destination Mosaic
+    Delay 0.025
+    Weight 0.0
+}
+
+## Reconnect after 1000 ms
+Connection all_reconnect
+{
+    Source Mosaic
+    Destination Mosaic
+    Delay 1000
+    Weight 1.0
+}
+
+Stimulus spikeReplay_358485
+{
+    Mode Current
+    Delay 0
+    Duration 4000
+    Pattern SynapseReplay
+    SpikeFile input.dat
+}
+
+StimulusInject spikeReplay_358485_inject
+{
+    Stimulus spikeReplay_358485
+    Target Mosaic
+}

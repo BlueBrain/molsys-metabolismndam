@@ -1,0 +1,424 @@
+Run Default
+{
+
+   MorphologyPath /gpfs/bbp.cscs.ch/project/proj59/entities/morphologies/2017.10.31
+   METypePath   /gpfs/bbp.cscs.ch/project/proj34/sh_ngvm/emodels_dend_highATP
+   MEComboInfoFile /gpfs/bbp.cscs.ch/project/proj34/camps/custom_neurodamus/mecombo_emodel.tsv
+
+      CircuitPath /gpfs/bbp.cscs.ch/project/proj64/circuits/O1.v6a/20181207
+          nrnPath /gpfs/bbp.cscs.ch/project/proj64/circuits/O1.v6a/20181207/connectome/functional
+  CellLibraryFile circuit.mvd3
+
+	CurrentDir /gpfs/bbp.cscs.ch/project/proj34/sh_ngvm/column/gen_nostim_highATP
+      OutputRoot /gpfs/bbp.cscs.ch/project/proj34/scratch/polina/gen_nostim_highATP_31jan2021
+      TargetFile /gpfs/bbp.cscs.ch/project/proj34/sh_ngvm/column/gen_nostim_highATP/user.target
+
+
+    CircuitTarget mc2_Column
+         Duration 5000
+               Dt 0.025
+
+    RunMode RR
+
+}
+
+Report soma
+{
+        Target mc2_Column
+        Type compartment
+        ReportOn v
+        Unit mV
+        Format Bin
+        Dt 0.1
+        StartTime 0
+        EndTime 5000
+}
+
+Report NaConcAllCmps
+{
+    Target mc2_Column
+    Type compartment
+    ReportOn nai
+    Unit mM
+    Format Bin
+    Dt 1
+    StartTime 0
+    EndTime 5000
+}
+
+Report ATPConcAllCmps
+{
+    Target mc2_Column
+    Type compartment
+    ReportOn atpi
+    Unit mM
+    Format Bin
+    Dt 1
+    StartTime 0
+    EndTime 5000
+}
+
+Report ADPConcAllCmps
+{   
+    Target mc2_Column
+    Type compartment
+    ReportOn adpi
+    Unit mM
+    Format Bin
+    Dt 1
+    StartTime 0
+    EndTime 5000
+}
+
+Report KConcAllCmps
+{   
+    Target mc2_Column
+    Type compartment
+    ReportOn ki
+    Unit mM
+    Format Bin
+    Dt 1
+    StartTime 0
+    EndTime 5000
+}
+
+Report CaConcAllCmps
+{   
+    Target mc2_Column
+    Type compartment
+    ReportOn cai
+    Unit mM
+    Format Bin
+    Dt 1
+    StartTime 0
+    EndTime 5000
+}   
+
+Report NaCurrCellSum
+{
+    Target mc2_Column
+    Type Summation
+    ReportOn ina
+    Unit nA
+    Format Bin
+    Scaling Area
+    Dt 1.0 
+    StartTime 0
+    EndTime 5000
+}
+
+Report NaCurrCellSumNosc
+{
+    Target mc2_Column
+    Type Summation
+    ReportOn ina
+    Unit nA
+    Format Bin
+    Scaling None
+    Dt 1.0 
+    StartTime 0
+    EndTime 5000
+}
+
+Stimulus ThresholdExc
+{
+
+              Mode Current
+           Pattern Noise
+       MeanPercent 85.0
+          Variance 0.001
+             Delay 0.000000
+          Duration 5000
+}
+
+Stimulus ThresholdInh
+{
+
+              Mode Current
+           Pattern Noise
+       MeanPercent 85.0
+          Variance 0.001
+             Delay 0.000000
+          Duration 5000
+}
+
+StimulusInject ThresholdIntoExc
+{
+        Stimulus ThresholdExc
+        Target Excitatory
+}
+
+StimulusInject ThresholdIntoInh
+{
+        Stimulus ThresholdInh
+        Target Inhibitory
+}
+
+Stimulus hypamp
+{
+        Mode Current
+  Pattern Hyperpolarizing
+        Delay 0.0
+  Duration 5000
+}
+
+StimulusInject hypamp_mosaic
+{
+        Stimulus hypamp
+        Target Mosaic
+}
+
+# Adjustments due to extracellular calcium = 1.25 mM, instead of normal 2.0 mM
+
+## Excitatory-excitatory
+## Based on L4SS->L23PC data from Silver et al., 2003
+## Based on L5TTPC->L5TTPC data from Tsodyks & Markram, 1997
+Connection Ca_Use_E-E
+{       
+              Source Excitatory 
+         Destination Excitatory
+              Weight 1.0
+    SynapseConfigure %s.Use *= 0.18540969668669067066
+}
+
+## PC-proximal targeting interneurons (CHC, BC)
+## Based on L23PC -> BC data from Rozov et al., 2001
+## Based on L23NBC->L23NBC data from Gupta et al., 2000
+Connection Ca_Use_E-PV_FS
+{       
+              Source Excitatory 
+         Destination PV_FS
+              Weight 1.0
+    SynapseConfigure %s.Use *= 0.68954188459730610370
+}
+
+## Why reciprocal?
+Connection Ca_Use_PV_FS-E
+{       
+              Source PV_FS
+         Destination Excitatory
+              Weight 1.0
+    SynapseConfigure %s.Use *= 0.68954188459730610370
+}
+
+## PC-distal targeting interneurons (BP, BTC, DBC, MC)
+## Based on L23PC -> BTC data from Rozov et al., 2001
+Connection Ca_Use_E-DISTAR_INH
+{       
+              Source Excitatory 
+         Destination DISTAR_INH
+              Weight 1.0
+    SynapseConfigure %s.Use *= 0.18540969668669067066
+}
+
+## Why reciprocal?
+Connection Ca_Use_DISTAR_INH-E
+{       
+              Source DISTAR_INH
+         Destination Excitatory
+              Weight 1.0
+    SynapseConfigure %s.Use *= 0.18540969668669067066
+}
+
+## PC-other interneurons (L1, NGC)
+## No data available
+Connection Ca_Use_E-Other_Inh
+{       
+              Source Excitatory 
+         Destination Other_Inh
+              Weight 1.0
+    SynapseConfigure %s.Use *= 0.27717333303832085239
+}
+
+## Why reciprocal?
+Connection Ca_Use_Other_Inh-E
+{       
+              Source Other_Inh
+         Destination Excitatory
+              Weight 1.0
+    SynapseConfigure %s.Use *= 0.27717333303832085239
+}
+
+## Inhibitory-inhibitory
+## No data available
+Connection Ca_Use_I-I
+{       
+              Source Inhibitory
+         Destination Inhibitory
+              Weight 1.0
+    SynapseConfigure %s.Use *= 0.27717333303832085239
+}
+
+## External input
+## Thalamocortical fibers
+Connection Ca_Use_E-E_TC
+{
+              Source proj_Thalamocortical_VPM_Source
+         Destination Mosaic
+              Weight 1.0
+    SynapseConfigure %s.Use *= 0.18540969668669067066
+}
+
+
+# Adjustments due to extracellular potassium = 5.0 mM
+
+## GABA_B is a potassium channel
+Connection GABAB_Erev
+{
+              Source Inhibitory
+         Destination Mosaic
+              Weight 1.0
+    SynapseConfigure %s.e_GABAB = -77.79331382074073464111
+}
+
+## Why -80 mV for GABA_A?
+Connection GABAA_Erev
+{
+              Source Inhibitory
+         Destination Mosaic
+              Weight 1.0
+    SynapseConfigure %s.e_GABAA = -80.0
+}
+
+
+# Adjustments due to extracellular magnesium = 1.0 mM
+
+Connection MGGate
+{
+              Source Excitatory
+         Destination Mosaic
+              Weight 1.0
+    SynapseConfigure %s.mg = 1.0
+}
+
+
+# Adjust AMPA to NMDA receptor ratios
+
+# Where does this value come from?
+Connection NMDA_ratio_E-E
+{       
+              Source Excitatory 
+         Destination Excitatory
+              Weight 1.0
+    SynapseConfigure %s.NMDA_ratio = 0.4
+}
+
+# Where does this value come from?
+Connection NMDA_ratio_E-I
+{       
+              Source Excitatory
+         Destination Inhibitory
+              Weight 1.0
+    SynapseConfigure %s.NMDA_ratio = 0.8
+}
+
+# Value from Myme et al. 2003, based on Markram et al. 1997 at [Mg2+]_o = 1 mM
+Connection NMDA_ratio_L5TPC
+{       
+              Source L5_TPC_AB
+         Destination L5_TPC_AB
+              Weight 1.0
+    SynapseConfigure %s.NMDA_ratio = 0.71
+}
+
+# Value from Feldmeyer et al. 1999 at [Mg2+]_o = 0 mM, ±0.64
+Connection NMDA_ratio_L4E
+{
+              Source Layer4Excitatory
+         Destination Layer4Excitatory
+              Weight 1.0
+    SynapseConfigure %s.NMDA_ratio = 0.86
+}
+
+# Value from Feldmeyer et al. 2002 at [Mg2+]_o = 0 mM, ±0.29
+Connection NMDA_ratio_L4SSC-L23E
+{
+              Source L4_SSC
+         Destination Layer23Excitatory
+              Weight 1.0
+    SynapseConfigure %s.NMDA_ratio = 0.5
+}
+
+
+# Adjust GABA_A to GABA_B receptor ratios
+## Where do these values come from?
+
+Connection GABAB_ratio_L1-E
+{       
+              Source Layer1
+         Destination Excitatory
+              Weight 1.0
+    SynapseConfigure %s.GABAB_ratio = 0.75
+}
+
+Connection GABAB_ratio_L23NGC-E
+{       
+              Source L23_NGC
+         Destination Excitatory
+              Weight 1.0
+    SynapseConfigure %s.GABAB_ratio = 0.75
+}
+
+
+# Spontaneous release
+## NB: Weights here are effectively ignored.  Weight is taken as that assigned to the synapse
+## after processing all subsequent (non-delayed) connection blocks.
+## Where do these values come from?
+
+Connection SpontMinis_E-L6
+{
+         Source Excitatory
+    Destination L6
+         Weight 1.0
+     SpontMinis 0.04
+}
+
+Connection SpontMinis_E-L5
+{
+         Source Excitatory
+    Destination L5
+         Weight 1.0
+     SpontMinis 0.067
+}
+
+Connection SpontMinis_E-L4
+{
+         Source Excitatory
+    Destination L4
+         Weight 1.0
+     SpontMinis 0.072
+}
+
+Connection SpontMinis_E-L3
+{
+         Source Excitatory
+    Destination L3
+         Weight 1.0
+     SpontMinis 0.122
+}
+
+Connection SpontMinis_E-L2
+{
+         Source Excitatory
+    Destination L2
+         Weight 1.0
+     SpontMinis 0.26
+}
+
+Connection SpontMinis_E-L1
+{
+         Source Excitatory
+    Destination L1
+         Weight 1.0
+     SpontMinis 0.63
+}
+
+Connection SpontMinis_I-Mosaic
+{
+         Source Inhibitory
+    Destination Mosaic
+         Weight 1.0
+     SpontMinis 0.012
+}
+
+
