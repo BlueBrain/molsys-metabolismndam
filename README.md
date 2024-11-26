@@ -1,10 +1,4 @@
-# Funding
 
-The development of this software was supported by funding to the Blue Brain Project, a research center of the École polytechnique fédérale de Lausanne (EPFL), from the Swiss government’s ETH Board of the Swiss Federal Institutes of Technology.
-
-# Copyright
-
-Copyright (c) 2024 Blue Brain Project/EPFL
 
 # Project description
 
@@ -60,6 +54,14 @@ Julia pkgs:
   [731186ca] RecursiveArrayTools v2.11.3
   [efcf1570] Setfield v0.7.0
   [276daf66] SpecialFunctions v0.10.3
+
+# Funding
+
+The development of this software was supported by funding to the Blue Brain Project, a research center of the École polytechnique fédérale de Lausanne (EPFL), from the Swiss government’s ETH Board of the Swiss Federal Institutes of Technology.
+
+# Copyright
+
+Copyright (c) 2024 Blue Brain Project/EPFL
   [9672c7b4] SteadyStateDiffEq v1.6.2
   [789caeaf] StochasticDiffEq v6.33.1
 
